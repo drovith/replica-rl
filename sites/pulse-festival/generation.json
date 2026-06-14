@@ -1,0 +1,18 @@
+{
+  "id": "pulse-festival",
+  "brief": "A three-day independent music and arts festival held on a coastal site, covering multiple stages and genres. The audience is younger festival-goers deciding whether to buy tickets. Pages should cover the festival, the lineup, the schedule by day and stage, tickets and passes, and travel/accommodation info. Lean into a maximalist, high-energy aesthetic: clashing vivid colours, oversized expressive display type, layered shapes, and a poster-like sense of motion.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 8,
+  "summary": "Built RIPTIDE \u2014 a maximalist, poster-like 5-page site for an independent coastal music & arts festival (home, lineup, schedule, tickets, travel) on a shared Anton/Space Grotesk design system with clashing vivid colours, layered shapes and animated marquees.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "lineup.html",
+    "schedule.html",
+    "tickets.html",
+    "travel.html",
+    "manifest.json"
+  ]
+}

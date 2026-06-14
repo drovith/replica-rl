@@ -1,0 +1,17 @@
+{
+  "summary": "Spanforge is a dark, terminal-flavoured marketing site for an OpenTelemetry-native distributed tracing platform aimed at staff engineers and SREs, with dense data-feeling layouts, trace waterfalls, code snippets and a restrained signal-lime accent.",
+  "design_system": {
+    "style_descriptors": ["dark", "technical", "dense", "monospaced-accent", "editorial", "developer-first"],
+    "palette": ["#07080b", "#0e1117", "#181d27", "#20262f", "#e7eaf0", "#aab2c0", "#c4f54a", "#6fd3ff"],
+    "fonts": ["Space Grotesk", "Inter", "JetBrains Mono"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Product overview, hero trace waterfall, feature grid, sampling and cost story."},
+    {"path": "platform.html", "title": "Platform", "purpose": "Deep dive into trace explorer, service map, alerting and cost controls."},
+    {"path": "how-it-works.html", "title": "How it works", "purpose": "Primer on traces, spans, context propagation and head vs. tail sampling."},
+    {"path": "integrations.html", "title": "Integrations", "purpose": "Language SDKs, infrastructure integrations and outbound alerting/export."},
+    {"path": "pricing.html", "title": "Pricing", "purpose": "Three tiers, comparison table, cost math and billing FAQ."},
+    {"path": "changelog.html", "title": "Changelog", "purpose": "Versioned release history of backend, SDK, console and security changes."}
+  ]
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit &amp; Reservations — Sorrel &amp; Stone</title>
+<meta name="description" content="Book a table, find opening hours and directions to Sorrel & Stone, the farm-to-table restaurant in the old feed mill at Harlow Creek.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="Sorrel and Stone, home">
+      <svg class="mark" width="30" height="34" viewBox="0 0 30 34" fill="none" aria-hidden="true">
+        <path d="M15 33V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M15 18C15 12 9 9 4 9c0 6 5 9 11 9Z" fill="currentColor"/>
+        <path d="M15 14C15 8 21 5 26 5c0 6-5 9-11 9Z" fill="currentColor"/>
+        <path d="M15 24c0-4-4-6-8-6 0 4 4 6 8 6Z" fill="currentColor" opacity="0.7"/>
+      </svg>
+      <span class="brand-name">Sorrel &amp; Stone<span class="brand-sub">Harlow Creek</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="farms.html">Farms</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="visit.html" class="active">Visit</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn" href="#book">Reserve a table</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- PAGE HEAD -->
+  <section class="pagehead">
+    <div class="wrap pagehead-inner">
+      <p class="eyebrow eyebrow--light">Visit &amp; reservations</p>
+      <h1>Find us by the <em>water, by the candlelight.</em></h1>
+      <p class="lede">We're a small room and we book up — particularly at weekends. Reserve ahead where you can, drop in if you're passing, and we'll do our best to find you a seat.</p>
+    </div>
+  </section>
+
+  <!-- INFO CARDS -->
+  <section class="section--tight section">
+    <div class="wrap">
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Opening hours</h3>
+          <div class="row"><span>Monday</span><span>Closed</span></div>
+          <div class="row"><span>Tuesday</span><span>Closed</span></div>
+          <div class="row"><span>Wednesday</span><span>5pm – 10pm</span></div>
+          <div class="row"><span>Thursday</span><span>5pm – 10pm</span></div>
+          <div class="row"><span>Friday</span><span>5pm – 11pm</span></div>
+          <div class="row"><span>Saturday</span><span>12pm – 11pm</span></div>
+          <div class="row"><span>Sunday</span><span>12pm – 5pm</span></div>
+        </div>
+        <div class="info-card">
+          <h3>Where we are</h3>
+          <p style="margin-bottom:16px;">The Old Feed Mill, Mill Lane,<br>Harlow Creek, HC8 4QR</p>
+          <div class="row"><span>By car</span><span>Free yard parking</span></div>
+          <div class="row"><span>By train</span><span>Marsden, 9 min taxi</span></div>
+          <div class="row"><span>By foot</span><span>Riverside path from village</span></div>
+          <p style="margin-top:16px;font-size:14.5px;">Step-free access to the dining room; The Hayloft is reached by stairs.</p>
+        </div>
+        <div class="info-card">
+          <h3>Get in touch</h3>
+          <p style="margin-bottom:16px;">We answer the phone between 10am and 9pm on opening days, and reply to email within a day.</p>
+          <div class="row"><span>Reservations</span><span>01694 555 217</span></div>
+          <div class="row"><span>General</span><span>hello@sorrelandstone.co</span></div>
+          <div class="row"><span>Events</span><span>events@sorrelandstone.co</span></div>
+          <div class="row"><span>Press</span><span>press@sorrelandstone.co</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING SPLIT -->
+  <section class="section band-cream" id="book">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Reserve a table</p>
+        <h2 class="section-head" style="font-size:clamp(30px,3.6vw,46px);">Book in <em>under a minute</em></h2>
+        <p class="lede" style="margin-top:20px;">Tables can be reserved up to eight weeks ahead. For parties of seven or more, or to book the whole room, please call us directly so we can look after you properly.</p>
+        <form onsubmit="return false" aria-label="Reservation enquiry">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+            <label style="display:block;">
+              <span style="display:block;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Date</span>
+              <input type="text" placeholder="Sat 16 Nov" style="width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:6px;font-family:var(--sans);font-size:15px;background:var(--paper);">
+            </label>
+            <label style="display:block;">
+              <span style="display:block;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Time</span>
+              <input type="text" placeholder="7:30pm" style="width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:6px;font-family:var(--sans);font-size:15px;background:var(--paper);">
+            </label>
+            <label style="display:block;">
+              <span style="display:block;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Guests</span>
+              <input type="text" placeholder="2 people" style="width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:6px;font-family:var(--sans);font-size:15px;background:var(--paper);">
+            </label>
+            <label style="display:block;">
+              <span style="display:block;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Name</span>
+              <input type="text" placeholder="Your name" style="width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:6px;font-family:var(--sans);font-size:15px;background:var(--paper);">
+            </label>
+          </div>
+          <label style="display:block;margin-bottom:18px;">
+            <span style="display:block;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;">Anything we should know?</span>
+            <input type="text" placeholder="Allergies, a birthday, a window seat…" style="width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:6px;font-family:var(--sans);font-size:15px;background:var(--paper);">
+          </label>
+          <button class="btn" type="submit">Request this table</button>
+          <p style="font-size:13.5px;color:var(--ink-soft);margin-top:14px;">We'll confirm your booking by email or text within the hour. No deposit needed for tables of six or fewer.</p>
+        </form>
+      </div>
+      <div class="split-media">
+        <img src="assets/095813c81ef0.jpg" alt="A laid table with linen, candles and a glass of wine in a warm dining room">
+        <div class="split-tag">
+          <span>Good to know</span>
+          <strong>We hold a few tables each night for walk-ins</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-2" style="align-items:center;gap:56px;">
+        <div>
+          <p class="eyebrow">Finding the mill</p>
+          <h2 class="section-head" style="font-size:clamp(28px,3.2vw,42px);">Down Mill Lane, <em>where the river bends</em></h2>
+          <p style="margin-top:18px;color:var(--ink-soft);">Follow the high street through Harlow Creek village and turn down Mill Lane beside the stone bridge. The restaurant is at the very end, where the lane meets the water — you'll see the old waterwheel and the lit windows before you see the sign.</p>
+          <ul class="profile-list" style="margin-top:8px;">
+            <li>Free parking in the mill yard, with two accessible bays</li>
+            <li>A flat riverside footpath leads from the village square, five minutes</li>
+            <li>Marsden station is nine minutes by taxi; we're happy to call one for you</li>
+            <li>Secure bike racks under cover by the terrace</li>
+          </ul>
+        </div>
+        <div class="map-card" role="img" aria-label="Stylised map showing Sorrel and Stone at the end of Mill Lane by the river in Harlow Creek">
+          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="600" height="400" fill="#E5E0CC"/>
+            <!-- river -->
+            <path d="M-20 250 C120 220 180 320 320 300 C440 282 500 340 640 320 L640 400 L-20 400 Z" fill="#BFD0C4"/>
+            <path d="M-20 250 C120 220 180 320 320 300 C440 282 500 340 640 320" fill="none" stroke="#9DB6A6" stroke-width="3"/>
+            <!-- fields -->
+            <path d="M40 40 L260 40 L240 150 L30 150 Z" fill="#D9DBBE"/>
+            <path d="M300 30 L560 50 L560 160 L320 150 Z" fill="#D2D9B8"/>
+            <!-- roads -->
+            <path d="M0 120 L600 150" stroke="#F4EFE2" stroke-width="14"/>
+            <path d="M300 0 L320 300" stroke="#F4EFE2" stroke-width="20"/>
+            <path d="M300 0 L320 300" stroke="#E4DDCB" stroke-width="2" stroke-dasharray="8 10"/>
+            <!-- blocks -->
+            <rect x="120" y="170" width="50" height="40" rx="4" fill="#CFC6AE"/>
+            <rect x="190" y="180" width="40" height="34" rx="4" fill="#CFC6AE"/>
+            <rect x="380" y="170" width="44" height="36" rx="4" fill="#CFC6AE"/>
+            <!-- labels -->
+            <text x="150" y="80" font-family="Work Sans, sans-serif" font-size="15" fill="#8a8468">Harlow Creek</text>
+            <text x="400" y="95" font-family="Work Sans, sans-serif" font-size="13" fill="#9aa07e">Wren Field</text>
+            <text x="332" y="180" font-family="Work Sans, sans-serif" font-size="12" fill="#9c9678" transform="rotate(88 332 180)">Mill Lane</text>
+            <text x="60" y="280" font-family="Work Sans, sans-serif" font-size="13" fill="#8fa593">River Harlow</text>
+          </svg>
+          <div class="map-pin"><div class="dot"></div><span>Sorrel &amp; Stone</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KNOW BEFORE YOU GO -->
+  <section class="section band-oat">
+    <div class="wrap">
+      <div class="section-head center" style="margin-bottom:44px;">
+        <p class="eyebrow eyebrow--center">Before you come</p>
+        <h2>A few <em>house notes</em></h2>
+      </div>
+      <div class="faq" style="max-width:880px;">
+        <div class="faq-item">
+          <h3>Can you cater for dietary needs?</h3>
+          <p>Yes — vegetarian and vegan menus run every service, and we adapt for allergies and intolerances daily. Tell us when you book and our kitchen, which knows every ingredient by name, will take care of the rest.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Are children welcome?</h3>
+          <p>Very. We love a family table, especially at Sunday lunch, and offer smaller portions of the day's menu for younger diners. High chairs are available — just let us know.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you take walk-ins?</h3>
+          <p>We hold a handful of tables and bar seats back each evening for people passing through. Weekends are tight, so a quick call ahead is always worth it.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is there a dress code?</h3>
+          <p>None at all. Come as you are — we've welcomed muddy walking boots and wedding suits at neighbouring tables on the same night.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can we buy a gift voucher?</h3>
+          <p>We sell vouchers for any value and for the Kitchen's Choice tasting. Email hello@sorrelandstone.co and we'll post a hand-written one out, or have it ready to collect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section--tight" style="padding-bottom:110px;">
+    <div class="wrap">
+      <div class="cta-strip">
+        <div>
+          <h2>We'll keep the <em>candles lit.</em></h2>
+          <p>Browse this week's menu before you arrive, then book your table and leave the rest to us.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn--light" href="#book">Book a table</a>
+          <a class="btn btn--outline-light" href="menu.html">See the menu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Sorrel and Stone, home">
+          <svg class="mark" width="30" height="34" viewBox="0 0 30 34" fill="none" aria-hidden="true">
+            <path d="M15 33V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M15 18C15 12 9 9 4 9c0 6 5 9 11 9Z" fill="currentColor"/>
+            <path d="M15 14C15 8 21 5 26 5c0 6-5 9-11 9Z" fill="currentColor"/>
+            <path d="M15 24c0-4-4-6-8-6 0 4 4 6 8 6Z" fill="currentColor" opacity="0.7"/>
+          </svg>
+          <span class="brand-name">Sorrel &amp; Stone<span class="brand-sub">Harlow Creek</span></span>
+        </a>
+        <p>A seasonal farm-to-table kitchen in a converted feed mill, cooking the harvest of one small valley.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="visit.html">Reservations</a></li>
+          <li><a href="visit.html">Opening hours</a></li>
+          <li><a href="visit.html">Find us</a></li>
+          <li><a href="events.html">Private events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="story.html">Our story</a></li>
+          <li><a href="menu.html">The menu</a></li>
+          <li><a href="farms.html">Farms &amp; suppliers</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Find the mill</h4>
+        <p>The Old Feed Mill, Mill Lane<br>Harlow Creek, HC8 4QR</p>
+        <p>hello@sorrelandstone.co</p>
+        <p>01694 555 217</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="brand-sub">© 2014–2024 Sorrel &amp; Stone</span>
+      <span class="brand-sub">Open Wednesday to Sunday · Kitchen from 5pm</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

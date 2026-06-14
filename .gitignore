@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Virtualenv / tooling
+.python-version
+
+# Harbor run outputs (regenerable; 2GB+ of trial artifacts)
+jobs/
+
+# Logs
+*.log
+
+# Generation staging (transient; wiped on crash/retry)
+sites/.staging/
+
+# Transient render caches
+report/_replicas/
+
+# OS
+.DS_Store
+
+# Secrets — never commit
+.env
+.env.*
+*.pem

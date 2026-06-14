@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How distributed tracing works — Spanforge</title>
+<meta name="description" content="A practical primer on distributed tracing: traces, spans, context propagation, sampling strategies, and how a request becomes a waterfall in Spanforge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Spanforge home">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+        <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+        <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+      </svg>
+      <span class="brand-name">span<b>forge</b></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="platform.html">Platform</a>
+      <a href="how-it-works.html" aria-current="page">How it works</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+    <div class="header-actions">
+      <a class="link-quiet" href="#">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Field guide</span>
+      <h1>How distributed tracing actually works.</h1>
+      <p class="lead">One user click can fan out across a dozen services. Tracing stitches those hops back into a single story so you can see where a request spent its time. Here's the model, end to end — no hand-waving.</p>
+    </div>
+  </section>
+
+  <!-- DEFINITIONS -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The vocabulary</span>
+        <h2>Three nouns and you've got it.</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <span class="tag">trace</span>
+          <h3 style="margin-top:16px">The whole journey</h3>
+          <p>One request from edge to edge. Every service it touches contributes to the same trace, identified by a single 128-bit <span class="mono lime">trace_id</span> that rides along for the entire trip.</p>
+        </article>
+        <article class="card">
+          <span class="tag">span</span>
+          <h3 style="margin-top:16px">One unit of work</h3>
+          <p>A named, timed operation — an HTTP handler, a SQL query, a Kafka publish. A span records start time, duration, status, and a bag of attributes. Spans nest to form the trace.</p>
+        </article>
+        <article class="card">
+          <span class="tag">context</span>
+          <h3 style="margin-top:16px">The thread that connects</h3>
+          <p>The metadata — trace ID and parent span ID — passed between services so a child span knows who its parent was. Propagated over headers using the W3C <span class="mono lime">traceparent</span> standard.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANATOMY OF A SPAN -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="eyebrow">Anatomy of a span</span>
+          <h2>What's actually inside one span.</h2>
+          <p class="lead">A span is just structured data. The richer the attributes you attach, the more questions you can answer later — without redeploying to add a log line.</p>
+          <ul class="feature-list">
+            <li><span class="mk">→</span><span><b>Identity:</b> <span class="mono">trace_id</span>, <span class="mono">span_id</span>, <span class="mono">parent_span_id</span>.</span></li>
+            <li><span class="mk">→</span><span><b>Timing:</b> a start timestamp and a duration, in nanoseconds.</span></li>
+            <li><span class="mk">→</span><span><b>Status:</b> OK, ERROR, or UNSET — the basis of error-rate math.</span></li>
+            <li><span class="mk">→</span><span><b>Attributes &amp; events:</b> arbitrary key/values and timestamped logs scoped to the span.</span></li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">span.json</span><span class="code-tab">OTLP</span></div>
+<pre>{
+  <span class="tok-key">"trace_id"</span>:       <span class="tok-str">"4bf92f3577b34da6a3ce929d0e0e4736"</span>,
+  <span class="tok-key">"span_id"</span>:        <span class="tok-str">"00f067aa0ba902b7"</span>,
+  <span class="tok-key">"parent_span_id"</span>: <span class="tok-str">"a2fb4a1d1a96d312"</span>,
+  <span class="tok-key">"name"</span>:           <span class="tok-str">"SELECT orders"</span>,
+  <span class="tok-key">"kind"</span>:           <span class="tok-str">"CLIENT"</span>,
+  <span class="tok-key">"start"</span>:          <span class="tok-num">1719421200123000000</span>,
+  <span class="tok-key">"duration_ns"</span>:    <span class="tok-num">189402000</span>,
+  <span class="tok-key">"status"</span>:         <span class="tok-str">"OK"</span>,
+  <span class="tok-key">"attributes"</span>: {
+    <span class="tok-key">"db.system"</span>:    <span class="tok-str">"postgresql"</span>,
+    <span class="tok-key">"db.statement"</span>: <span class="tok-str">"SELECT … FOR UPDATE"</span>,
+    <span class="tok-key">"net.peer.name"</span>:<span class="tok-str">"orders-db-3"</span>
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE STEPS -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The pipeline</span>
+        <h2>From a click to a waterfall, in five moves.</h2>
+        <p>This is the exact path a request takes through an instrumented system into Spanforge.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-n">01</span>
+        <div>
+          <h3>A root span opens at the edge</h3>
+          <p>Your API gateway receives <span class="mono lime">POST /v2/checkout</span>. The OTel SDK mints a fresh <span class="mono">trace_id</span> and starts a root span. From here, everything that happens belongs to this trace.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <div>
+          <h3>Context propagates on every hop</h3>
+          <p>When the gateway calls <span class="mono">cart-svc</span> over gRPC, the SDK injects a <span class="mono lime">traceparent</span> header. The callee reads it, opens a child span pointing back at its parent, and the chain extends — across processes, languages and the network.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <div>
+          <h3>Spans close and flush to the collector</h3>
+          <p>As each operation finishes, its span is recorded with a final duration and status, then batched to an OpenTelemetry Collector. The collector is your buffer and routing layer — it never blocks the request path.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">04</span>
+        <div>
+          <h3>Spanforge reassembles &amp; samples the trace</h3>
+          <p>We buffer all spans sharing a <span class="mono">trace_id</span> until the trace is complete, then run your tail-sampling policy. Errors and slow outliers are kept in full; healthy traffic is sampled to a baseline rate. Only then does anything count against ingest.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">05</span>
+        <div>
+          <h3>You read it as a waterfall</h3>
+          <p>The reassembled trace renders as a time-ordered waterfall: parent above child, width proportional to duration. The longest bar on the critical path is almost always your culprit — here, a 189ms locking query.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPAGATION EXAMPLE -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split split--rev">
+        <div>
+          <span class="eyebrow">Context propagation</span>
+          <h2>One header carries the whole trace.</h2>
+          <p class="lead">The W3C Trace Context spec defines a single <span class="mono">traceparent</span> header. Read its four fields and you can reconstruct the entire parent-child relationship without any shared state between services.</p>
+          <ul class="feature-list">
+            <li><span class="mk">→</span><span><b>version</b> — <span class="mono">00</span>, the current format.</span></li>
+            <li><span class="mk">→</span><span><b>trace-id</b> — 16 bytes, constant for the whole request.</span></li>
+            <li><span class="mk">→</span><span><b>parent-id</b> — the caller's span ID, becomes your parent.</span></li>
+            <li><span class="mk">→</span><span><b>flags</b> — sampling hints, e.g. <span class="mono">01</span> = sampled.</span></li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">request headers</span><span class="code-tab">HTTP</span></div>
+<pre><span class="tok-key">traceparent</span>: <span class="tok-num">00</span><span class="tok-pun">-</span><span class="tok-str">4bf92f3577b34da6a3ce929d0e0e4736</span><span class="tok-pun">-</span><span class="tok-str">00f067aa0ba902b7</span><span class="tok-pun">-</span><span class="tok-num">01</span>
+            <span class="tok-com">│  └ trace-id (16B)            └ parent-id   └ flags</span>
+            <span class="tok-com">└ version</span>
+
+<span class="tok-key">tracestate</span>: <span class="tok-var">sf</span>=<span class="tok-str">tenant:helios,tier:gold</span>
+<span class="tok-com"># vendor-specific baggage rides alongside, untouched</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLING COMPARISON -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Sampling strategies</span>
+        <h2>Head vs. tail — and why it decides your bill.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Property</th><th>Head-based</th><th>Tail-based <span class="lime mono">(Spanforge)</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Decision point</td><td>At the root, before work happens</td><td>After the trace completes</td></tr>
+            <tr><td>Keeps slow outliers?</td><td class="no">✕ only by luck</td><td class="yes">✓ always</td></tr>
+            <tr><td>Keeps every error?</td><td class="no">✕ probabilistic</td><td class="yes">✓ guaranteed</td></tr>
+            <tr><td>Buffering required</td><td>None</td><td>Spans held until trace closes</td></tr>
+            <tr><td>Ingest cost</td><td>Predictable but blind</td><td>Predictable <em>and</em> useful</td></tr>
+            <tr><td>Best for</td><td>Uniform, low-stakes traffic</td><td>Latency- &amp; error-sensitive systems</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:18px"><span class="dot"></span> Spanforge runs tail sampling for you — no separate tail-sampling processor to size, shard and babysit.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Common questions</span>
+        <h2>The things engineers ask first.</h2>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">Q1</span>
+        <div><h3>Does instrumentation slow my services down?</h3><p>Span creation is a few microseconds and export is asynchronous and batched off the request path. In practice the overhead is well under 1% of request latency, and you can cap it with sampling at the SDK if you need to.</p></div>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">Q2</span>
+        <div><h3>What if one service isn't instrumented?</h3><p>You get a gap in the waterfall where that span would be. Context still propagates through it as long as the service forwards the <span class="mono">traceparent</span> header, so the chain reconnects on the other side.</p></div>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">Q3</span>
+        <div><h3>Tracing vs. metrics vs. logs — do I need all three?</h3><p>They answer different questions. Metrics tell you <em>that</em> something is wrong, traces tell you <em>where</em>, logs tell you <em>why</em>. Spanforge links all three by trace ID so you move between them in one click.</p></div>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">Q4</span>
+        <div><h3>Is this OpenTelemetry, or your own thing?</h3><p>Pure OpenTelemetry. We ingest OTLP and never ask you to install a proprietary agent. If you leave, your instrumentation comes with you — that's the whole point of the standard.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow mx-auto" style="justify-content:center">Put theory to work</span>
+        <h2>Trace a real request in five minutes.</h2>
+        <p>You understand the model — now watch your own checkout path turn into a waterfall on the free tier.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-arrow" href="integrations.html">Install an SDK</a>
+          <a class="btn btn-ghost" href="pricing.html">Start free</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Spanforge home">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+            <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+            <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+          </svg>
+          <span class="brand-name">span<b>forge</b></span>
+        </a>
+        <p>OpenTelemetry-native distributed tracing for backend teams who care about latency and the cost of knowing about it.</p>
+        <span class="foot-status"><span class="dot"></span> All systems operational</span>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul>
+        <li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How tracing works</a></li>
+        <li><a href="integrations.html">Integrations</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="changelog.html">Changelog</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Developers</h4><ul>
+        <li><a href="integrations.html">SDKs</a></li><li><a href="how-it-works.html">Tracing guide</a></li>
+        <li><a href="changelog.html">API status</a></li><li><a href="#">OTLP reference</a></li><li><a href="#">Self-host</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Company</h4><ul>
+        <li><a href="#">About</a></li><li><a href="#">Security</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Spanforge, Inc. — built in Berlin &amp; Toronto</span>
+      <span class="badges"><span>SOC 2 Type II</span><span>·</span><span>GDPR</span><span>·</span><span>HIPAA-ready</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

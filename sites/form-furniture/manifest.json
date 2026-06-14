@@ -1,0 +1,17 @@
+{
+  "summary": "PLINTH is a modernist furniture studio site presenting a tight seven-piece collection of seating, tables, and lighting with a strict monochrome, editorial aesthetic.",
+  "design_system": {
+    "style_descriptors": ["minimal", "modernist", "monochrome", "editorial", "precise", "warm-neutral"],
+    "palette": ["#16140f", "#423f37", "#76736a", "#ddd9d0", "#f4f2ec", "#e8e4db", "#ffffff"],
+    "fonts": ["Archivo", "Inter"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Brand hero, philosophy, featured collection, stats and stockist call to action."},
+    {"path": "collection.html", "title": "Collection", "purpose": "The complete seven-piece catalogue indexed and grouped by seating, tables, and light."},
+    {"path": "product.html", "title": "Fold 01 Chair", "purpose": "Individual product detail for the Fold 01 lounge chair with gallery, finishes, specification and care."},
+    {"path": "craft.html", "title": "Craft", "purpose": "Materials, workshop process, and the repair-first guarantee."},
+    {"path": "about.html", "title": "Studio", "purpose": "Brand story, philosophy, working principles, founders and timeline."},
+    {"path": "stockists.html", "title": "Stockists", "purpose": "Stockist directory, trade information, contact form and FAQ."}
+  ]
+}

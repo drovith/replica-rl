@@ -1,0 +1,42 @@
+[
+  {
+    "id": "observability-saas",
+    "brief": "A B2B SaaS platform called a developer-facing observability and tracing product for backend engineering teams. The audience is staff engineers and SREs who care about latency, traces, and cost. Pages should cover the product, how distributed tracing works, pricing tiers, integrations/SDKs, and docs or a changelog. Lean into a dark, technical aesthetic with a tight monospaced accent font, dense data-feeling layouts, code snippets, and a restrained neon accent on near-black surfaces."
+  },
+  {
+    "id": "harbor-law",
+    "brief": "A boutique corporate law firm specialising in mergers, IP, and venture financing for founders and mid-market companies. The audience is CEOs, GCs, and founders evaluating counsel; trust and gravitas matter most. Pages should cover the firm, practice areas, attorney profiles, notable matters/insights, and contact. Lean into a conservative, authoritative aesthetic: a classic serif for headings, a navy-and-gold palette, formal spacing, and understated photography or portraits."
+  },
+  {
+    "id": "pulse-festival",
+    "brief": "A three-day independent music and arts festival held on a coastal site, covering multiple stages and genres. The audience is younger festival-goers deciding whether to buy tickets. Pages should cover the festival, the lineup, the schedule by day and stage, tickets and passes, and travel/accommodation info. Lean into a maximalist, high-energy aesthetic: clashing vivid colours, oversized expressive display type, layered shapes, and a poster-like sense of motion."
+  },
+  {
+    "id": "bright-smiles-pedo",
+    "brief": "A pediatric dental clinic focused on making dentistry calm and fun for kids, run by a small team of specialists. The audience is parents of young children choosing a dentist. Pages should cover the practice, services (checkups, sealants, orthodontics referrals), the team, new-patient info and what to expect, and contact/booking. Lean into a friendly, reassuring aesthetic: rounded shapes, a bright but soft pastel palette, playful illustrative spot graphics, and approachable, plain-language copy."
+  },
+  {
+    "id": "form-furniture",
+    "brief": "A modernist furniture brand selling a small, carefully designed collection of seating, tables, and lighting. The audience is design-literate buyers and interior designers. Pages should cover the brand and philosophy, the collection, individual product detail, materials and craftsmanship, and stockists/contact. Lean into a minimal, monochrome aesthetic: generous whitespace, a precise neutral sans-serif, large product imagery, and almost no decorative ornament."
+  },
+  {
+    "id": "hearth-table",
+    "brief": "A farm-to-table restaurant in a small town sourcing from nearby growers, with a seasonal changing menu. The audience is local diners and visitors booking a table or browsing the menu. Pages should cover the restaurant's story, the seasonal menu, the farms and suppliers, private events, and reservations/visit info. Lean into a warm, rustic, editorial aesthetic: earthy textured palette, a characterful serif paired with a humanist sans, and food-photography-led layouts."
+  },
+  {
+    "id": "vault-wallet",
+    "brief": "A consumer crypto and multi-chain wallet app emphasising security and self-custody, available on mobile and as a browser extension. The audience is crypto-curious consumers and existing holders. Pages should cover the product, security architecture, supported chains and features, pricing/fees, and download/get-started. Lean into a sleek, futuristic aesthetic: a dark canvas, vivid gradients, glassy translucent cards, subtle glow, and a clean geometric sans-serif."
+  },
+  {
+    "id": "coastal-marine-lab",
+    "brief": "A university marine-research laboratory studying coastal ecosystems, fisheries, and climate impact. The audience is academics, prospective graduate students, and journalists. Pages should cover the lab and its mission, research areas/projects, the people (faculty, students, staff), publications, and how to join or collaborate. Lean into a utilitarian, information-dense, classic-academic aesthetic: a readable serif body, clear blue hyperlinks, structured tables and lists, and a calm institutional palette with accessibility in mind."
+  },
+  {
+    "id": "still-point-retreat",
+    "brief": "A yoga and wellness retreat center offering multi-day residential programs in a quiet rural setting. The audience is adults seeking rest and reset, browsing programs and dates. Pages should cover the retreat and its ethos, the programs/retreats on offer, the space and accommodation, the teachers, and booking/visit details. Lean into a calm, airy aesthetic: soft neutral palette, very generous spacing, a light elegant serif, and a slow, uncluttered editorial rhythm."
+  },
+  {
+    "id": "offgrid-streetwear",
+    "brief": "An independent streetwear label dropping limited seasonal collections with a strong subcultural point of view. The audience is fashion-forward young shoppers following drops. Pages should cover the brand/manifesto, the current collection/lookbook, individual product detail, the drop schedule/archive, and stores/contact. Lean into a brutalist, high-contrast aesthetic: stark black-and-white, oversized grotesque type, an intentionally grid-breaking layout, and raw, confrontational energy."
+  }
+]

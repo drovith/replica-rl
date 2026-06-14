@@ -1,0 +1,19 @@
+{
+  "id": "offgrid-streetwear",
+  "brief": "An independent streetwear label dropping limited seasonal collections with a strong subcultural point of view. The audience is fashion-forward young shoppers following drops. Pages should cover the brand/manifesto, the current collection/lookbook, individual product detail, the drop schedule/archive, and stores/contact. Lean into a brutalist, high-contrast aesthetic: stark black-and-white, oversized grotesque type, an intentionally grid-breaking layout, and raw, confrontational energy.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 2,
+  "summary": "Built REFUSE\u00ae \u2014 a brutalist, high-contrast streetwear site (6 pages: home, manifesto, lookbook, product, drop schedule/archive, stores/contact) with a shared Archivo/Space Mono design system, garment-schematic SVG graphics, an acid-yellow disruptor, and intentionally grid-breaking layouts.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "manifesto.html",
+    "collection.html",
+    "product.html",
+    "drops.html",
+    "stores.html",
+    "manifest.json"
+  ]
+}

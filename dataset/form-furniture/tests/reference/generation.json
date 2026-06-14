@@ -1,0 +1,19 @@
+{
+  "id": "form-furniture",
+  "brief": "A modernist furniture brand selling a small, carefully designed collection of seating, tables, and lighting. The audience is design-literate buyers and interior designers. Pages should cover the brand and philosophy, the collection, individual product detail, materials and craftsmanship, and stockists/contact. Lean into a minimal, monochrome aesthetic: generous whitespace, a precise neutral sans-serif, large product imagery, and almost no decorative ornament.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built PLINTH, a six-page modernist furniture studio site with a strict monochrome design system (Archivo/Inter, warm-neutral palette, generous whitespace), shared header/footer, custom inline-SVG line illustrations for every piece, and distinct page types: home, collection index, product detail, craft/materials, studio/about, and stockists/contact.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "collection.html",
+    "product.html",
+    "craft.html",
+    "about.html",
+    "stockists.html",
+    "manifest.json"
+  ]
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog — Spanforge</title>
+<meta name="description" content="What's new in Spanforge: shipped features, fixes and changes to the tracing backend, SDKs, sampling engine and console.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Spanforge home">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+        <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+        <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+      </svg>
+      <span class="brand-name">span<b>forge</b></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="platform.html">Platform</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html" aria-current="page">Changelog</a>
+    </nav>
+    <div class="header-actions">
+      <a class="link-quiet" href="#">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Changelog</span>
+      <h1>What we shipped.</h1>
+      <p class="lead">Every meaningful change to the trace backend, SDKs, sampling engine and console. Subscribe to the RSS feed or watch the repo — we ship most weeks.</p>
+      <div class="kpi-row" style="margin-top:28px">
+        <span class="pill"><span class="dot"></span> API v2 · stable</span>
+        <span class="pill">99.98% uptime · 90d</span>
+        <span class="pill">SDKs · 6 languages</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section divider">
+    <div class="container">
+
+      <!-- 2.18 -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <div class="cl-ver">v2.18.0</div>
+          <div class="cl-date">November 12, 2025</div>
+          <div style="margin-top:14px"><span class="tag">backend</span></div>
+        </div>
+        <div class="cl-body">
+          <h3>Span diff and budget-aware sampling</h3>
+          <p>You can now pin two traces side by side and Spanforge highlights exactly where their structure and timing diverge — the fastest way to explain a regression to a teammate.</p>
+          <ul>
+            <li><span class="tag tag--add">Added</span> <span><b>Span diff</b> in the explorer: pin a healthy trace against a slow one and see per-span deltas.</span></li>
+            <li><span class="tag tag--add">Added</span> <span>Budget-aware baseline sampling — rates now auto-tighten as a service nears its ingest ceiling.</span></li>
+            <li><span class="tag tag--chg">Changed</span> <span>Default zstd compression for the OTLP exporter, ~22% smaller payloads on the wire.</span></li>
+            <li><span class="tag tag--fix">Fixed</span> <span>Rare reordering of sibling spans with identical start timestamps in the waterfall.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2.17 -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <div class="cl-ver">v2.17.0</div>
+          <div class="cl-date">October 28, 2025</div>
+          <div style="margin-top:14px"><span class="tag">console</span></div>
+        </div>
+        <div class="cl-body">
+          <h3>Deploy markers and 13-month retention GA</h3>
+          <p>Overlay every release on your latency charts and scrub back through more than a year of hot traces. 13-month retention is now generally available on Team and Enterprise.</p>
+          <ul>
+            <li><span class="tag tag--add">Added</span> <span><b>Deploy markers</b> from GitHub Actions, GitLab CI and Argo CD via the <code>/v2/deploys</code> endpoint.</span></li>
+            <li><span class="tag tag--add">Added</span> <span>13-month hot retention, GA — no cold restore step, fully queryable.</span></li>
+            <li><span class="tag tag--chg">Changed</span> <span>SpanQL <code>percentiles()</code> now accepts up to eight thresholds in one call.</span></li>
+            <li><span class="tag tag--fix">Fixed</span> <span>Service map degradation halos lingering after a service recovered.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2.16 -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <div class="cl-ver">v2.16.0</div>
+          <div class="cl-date">October 9, 2025</div>
+          <div style="margin-top:14px"><span class="tag">sdk</span></div>
+        </div>
+        <div class="cl-body">
+          <h3>Rust SDK beta and faster Java agent</h3>
+          <p>Our Rust distribution wrapping the <code>tracing</code> crate is now in public beta, with auto-instrumentation for axum, tonic and sqlx.</p>
+          <ul>
+            <li><span class="tag tag--add">Added</span> <span><b>Rust SDK</b> v0.24 (beta): <code>cargo add spanforge-otel</code>.</span></li>
+            <li><span class="tag tag--chg">Changed</span> <span>Java agent startup overhead cut 40% by lazy-loading instrumentation modules.</span></li>
+            <li><span class="tag tag--chg">Changed</span> <span>Node SDK now captures Prisma query spans with parameterized statement text.</span></li>
+            <li><span class="tag tag--fix">Fixed</span> <span>Python Celery context propagation dropped across <code>chord</code> callbacks.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2.15 -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <div class="cl-ver">v2.15.0</div>
+          <div class="cl-date">September 22, 2025</div>
+          <div style="margin-top:14px"><span class="tag">alerting</span></div>
+        </div>
+        <div class="cl-body">
+          <h3>Exemplar-linked alerts</h3>
+          <p>Alerts now carry the actual traces that fired them. Open a PagerDuty incident and the five slowest exemplars are one click away — no more reconstructing the moment by hand.</p>
+          <ul>
+            <li><span class="tag tag--add">Added</span> <span>Exemplar attachments on every alert, routed to PagerDuty, Opsgenie, Slack and Teams.</span></li>
+            <li><span class="tag tag--add">Added</span> <span>SLO burn-rate alerts with fast- and slow-burn windows.</span></li>
+            <li><span class="tag tag--fix">Fixed</span> <span>Duplicate notifications when an alert flapped across the threshold within one minute.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2.14 -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <div class="cl-ver">v2.14.0</div>
+          <div class="cl-date">September 3, 2025</div>
+          <div style="margin-top:14px"><span class="tag">backend</span></div>
+        </div>
+        <div class="cl-body">
+          <h3>Sub-second queries over 10B spans</h3>
+          <p>A new columnar index and bloom-filtered attribute lookups bring p95 explorer query latency under 900ms even on the largest workspaces.</p>
+          <ul>
+            <li><span class="tag tag--chg">Changed</span> <span>Rebuilt the trace store on a columnar segment format with per-attribute bloom filters.</span></li>
+            <li><span class="tag tag--chg">Changed</span> <span>p95 query latency over 10B spans dropped from 3.1s to 870ms.</span></li>
+            <li><span class="tag tag--fix">Fixed</span> <span>High-cardinality <code>tenant.id</code> filters occasionally timing out on cold segments.</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2.13 -->
+      <article class="cl-entry">
+        <div class="cl-meta">
+          <div class="cl-ver">v2.13.0</div>
+          <div class="cl-date">August 14, 2025</div>
+          <div style="margin-top:14px"><span class="tag">security</span></div>
+        </div>
+        <div class="cl-body">
+          <h3>SCIM provisioning and audit export</h3>
+          <p>Enterprise workspaces can now sync users and groups via SCIM and stream the full audit log to their own SIEM.</p>
+          <ul>
+            <li><span class="tag tag--add">Added</span> <span>SCIM 2.0 user and group provisioning for Okta and Entra ID.</span></li>
+            <li><span class="tag tag--add">Added</span> <span>Audit log export to S3, GCS and any OTLP-compatible SIEM.</span></li>
+            <li><span class="tag tag--fix">Fixed</span> <span>Scoped API keys could read service names outside their assigned project.</span></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow mx-auto" style="justify-content:center">Keep up</span>
+        <h2>New traces, new tools, most weeks.</h2>
+        <p>Start free and you'll get every improvement above the moment it ships — no upgrade cycle, no migration.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-arrow" href="pricing.html">Start free</a>
+          <a class="btn btn-ghost" href="platform.html">Tour the platform</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Spanforge home">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+            <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+            <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+          </svg>
+          <span class="brand-name">span<b>forge</b></span>
+        </a>
+        <p>OpenTelemetry-native distributed tracing for backend teams who care about latency and the cost of knowing about it.</p>
+        <span class="foot-status"><span class="dot"></span> All systems operational</span>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul>
+        <li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How tracing works</a></li>
+        <li><a href="integrations.html">Integrations</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="changelog.html">Changelog</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Developers</h4><ul>
+        <li><a href="integrations.html">SDKs</a></li><li><a href="how-it-works.html">Tracing guide</a></li>
+        <li><a href="changelog.html">API status</a></li><li><a href="#">OTLP reference</a></li><li><a href="#">Self-host</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Company</h4><ul>
+        <li><a href="#">About</a></li><li><a href="#">Security</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Spanforge, Inc. — built in Berlin &amp; Toronto</span>
+      <span class="badges"><span>SOC 2 Type II</span><span>·</span><span>GDPR</span><span>·</span><span>HIPAA-ready</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

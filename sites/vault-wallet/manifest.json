@@ -1,0 +1,16 @@
+{
+  "summary": "Marketing site for Novault, a sleek self-custody multi-chain crypto wallet for mobile and browser, with a dark futuristic aesthetic of vivid gradients and glassy cards.",
+  "design_system": {
+    "style_descriptors": ["futuristic", "dark", "glassy", "vivid", "geometric", "sleek"],
+    "palette": ["#06070E", "#0A0C18", "#8B5CFF", "#5B7CFF", "#25E6E0", "#FF5CE1", "#59E6A0", "#EEF0FB"],
+    "fonts": ["Space Grotesk", "Inter"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Product", "purpose": "Home / overview of the Novault self-custody wallet and core value props."},
+    {"path": "security.html", "title": "Security", "purpose": "Security architecture: on-device keys, defence layers, audits and comparison."},
+    {"path": "chains.html", "title": "Chains & Features", "purpose": "Supported networks plus swaps, staking, NFTs, ramps and platform coverage."},
+    {"path": "pricing.html", "title": "Pricing", "purpose": "Plans, transparent swap/ramp fee table and billing FAQ."},
+    {"path": "download.html", "title": "Download", "purpose": "Download links, three-step setup, migration and getting-started FAQ."}
+  ]
+}

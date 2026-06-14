@@ -1,0 +1,17 @@
+{
+  "summary": "Sproutling Pediatric Dentistry — a warm, playful marketing site for a kids-only dental practice, built around calm, plain-language care and a soft pastel design system.",
+  "design_system": {
+    "style_descriptors": ["friendly", "playful", "soft", "rounded", "reassuring", "bright-pastel"],
+    "palette": ["#FFF8F0", "#36495B", "#45C3AD", "#FF917E", "#FFB7CE", "#FFD25E", "#B8A6EE", "#9FDCF0"],
+    "fonts": ["Baloo 2", "Nunito"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Brand hero, reassurance, services preview, first-visit steps and parent testimonials."},
+    {"path": "about.html", "title": "About", "purpose": "The practice story, values, the space, and community work."},
+    {"path": "services.html", "title": "Services", "purpose": "Checkups, sealants, gentle fillings, orthodontic referrals, sensory and emergency care, plus cost info."},
+    {"path": "team.html", "title": "Our Team", "purpose": "Meet the specialist dentists and support team with credentials."},
+    {"path": "visit.html", "title": "Your Visit", "purpose": "New-patient info, what to expect, what to bring, calming approach and FAQ."},
+    {"path": "contact.html", "title": "Contact", "purpose": "Booking request form, contact details, hours, location map and emergency guidance."}
+  ]
+}

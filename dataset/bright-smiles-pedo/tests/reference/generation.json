@@ -1,0 +1,19 @@
+{
+  "id": "bright-smiles-pedo",
+  "brief": "A pediatric dental clinic focused on making dentistry calm and fun for kids, run by a small team of specialists. The audience is parents of young children choosing a dentist. Pages should cover the practice, services (checkups, sealants, orthodontics referrals), the team, new-patient info and what to expect, and contact/booking. Lean into a friendly, reassuring aesthetic: rounded shapes, a bright but soft pastel palette, playful illustrative spot graphics, and approachable, plain-language copy.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built Sproutling Pediatric Dentistry \u2014 a 6-page kids' dental clinic site with a soft pastel design system, rounded Baloo 2/Nunito type, playful inline-SVG spot graphics, and reassuring plain-language copy across Home, About, Services, Team, Your Visit, and Contact.",
+  "files": [
+    "assets/styles.css",
+    "index.html",
+    "about.html",
+    "services.html",
+    "team.html",
+    "visit.html",
+    "contact.html",
+    "manifest.json"
+  ]
+}

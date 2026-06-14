@@ -1,0 +1,17 @@
+{
+  "summary": "REFUSE is a brutalist marketing site for an independent Manchester streetwear label that drops limited, hand-printed seasonal collections and never restocks.",
+  "design_system": {
+    "style_descriptors": ["brutalist", "high-contrast", "raw", "editorial", "confrontational", "grid-breaking"],
+    "palette": ["#0b0b0b", "#efece3", "#e4e0d4", "#ffffff", "#d8ff00", "#8c887d"],
+    "fonts": ["Archivo Black", "Archivo", "Space Mono"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Index", "purpose": "Brand landing with hero, current-drop feature, ethos and newsletter."},
+    {"path": "manifesto.html", "title": "Manifesto", "purpose": "Brand story, six guiding principles and how garments are made."},
+    {"path": "collection.html", "title": "Collection", "purpose": "VOL.08 Concrete Gospel lookbook with the full 14-piece line-up."},
+    {"path": "product.html", "title": "Product", "purpose": "Dogma Heavyweight Hoodie product detail page with spec, sizes and related pieces."},
+    {"path": "drops.html", "title": "Schedule", "purpose": "Drop calendar, drop rules and the full sold-out archive VOL.00 to VOL.09."},
+    {"path": "stores.html", "title": "Stores", "purpose": "Studio store, global stockists, contact form, newsletter and FAQ."}
+  ]
+}

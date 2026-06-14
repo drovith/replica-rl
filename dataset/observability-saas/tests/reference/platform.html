@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform — Spanforge</title>
+<meta name="description" content="The Spanforge platform: trace explorer, span analytics, live service maps, alerting, and ingest cost controls — built on OpenTelemetry for backend engineering teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Spanforge home">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+        <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+        <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+      </svg>
+      <span class="brand-name">span<b>forge</b></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="platform.html" aria-current="page">Platform</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+    <div class="header-actions">
+      <a class="link-quiet" href="#">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">The platform</span>
+      <h1>One trace store. Every signal correlated.</h1>
+      <p class="lead">Spanforge is a column-oriented trace backend with metrics and logs hung off the same trace ID. Search billions of spans, watch your topology breathe, and put a hard ceiling on what observability costs — from one console.</p>
+    </div>
+  </section>
+
+  <!-- CAPABILITY STATS -->
+  <section class="section--tight divider">
+    <div class="container">
+      <div class="stat-band">
+        <div class="stat"><div class="num">40<span>+</span></div><div class="lbl">auto-instrumented libs</div></div>
+        <div class="stat"><div class="num">1<span>s</span></div><div class="lbl">query over 10B spans</div></div>
+        <div class="stat"><div class="num">0</div><div class="lbl">proprietary agents</div></div>
+        <div class="stat"><div class="num">100<span>%</span></div><div class="lbl">OTLP compatible</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. TRACE EXPLORER -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="eyebrow">01 · Trace explorer</span>
+          <h2>From a vague "it's slow" to the exact span.</h2>
+          <p class="lead">Compose queries the way you think about incidents — service, route, attribute, status, latency band — and get a ranked list of traces with full waterfalls behind each one.</p>
+          <ul class="feature-list">
+            <li><span class="mk">→</span><span><b>Attribute search</b> across any tag you emit: <span class="mono lime">tenant.id</span>, <span class="mono lime">db.statement</span>, <span class="mono lime">deploy.sha</span>.</span></li>
+            <li><span class="mk">→</span><span><b>Latency banding</b> to isolate the p99 tail and compare it against the median request shape.</span></li>
+            <li><span class="mk">→</span><span><b>Span diff</b> — pin a healthy trace next to a slow one and highlight where they diverged.</span></li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">explorer / query</span><span class="code-tab">SpanQL</span></div>
+<pre><span class="tok-key">service</span> = <span class="tok-str">"checkout-svc"</span>
+  <span class="tok-key">and</span> <span class="tok-key">route</span> = <span class="tok-str">"/v2/checkout"</span>
+  <span class="tok-key">and</span> <span class="tok-key">duration</span> &gt; <span class="tok-num">250ms</span>
+  <span class="tok-key">and</span> <span class="tok-key">span.db.system</span> = <span class="tok-str">"postgresql"</span>
+<span class="tok-pun">|</span> <span class="tok-fn">group_by</span>(span.db.statement)
+<span class="tok-pun">|</span> <span class="tok-fn">percentiles</span>(duration, <span class="tok-num">50</span>, <span class="tok-num">95</span>, <span class="tok-num">99</span>)
+<span class="tok-pun">|</span> <span class="tok-fn">sort</span>(p99 <span class="tok-key">desc</span>)
+
+<span class="tok-com">› 3 statements · top offender 189ms p99</span>
+<span class="tok-com">› SELECT … FROM orders … FOR UPDATE</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SERVICE MAP -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split split--rev">
+        <div>
+          <span class="eyebrow">02 · Live service map</span>
+          <h2>Topology drawn from real traffic, not a wiki.</h2>
+          <p class="lead">Every edge on the map is a measured span relationship. Hover any node for its error rate, throughput and p99; click an edge to see the slowest calls crossing it right now.</p>
+          <ul class="feature-list">
+            <li><span class="mk">→</span><span><b>Degradation halos</b> ring a service in amber the moment its error rate drifts off baseline.</span></li>
+            <li><span class="mk">→</span><span><b>Critical-path overlay</b> traces the single longest dependency chain through any request.</span></li>
+            <li><span class="mk">→</span><span><b>Blast-radius view</b> shows everything downstream of a node before you ship that change.</span></li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <div class="waterfall" role="img" aria-label="A service dependency map node showing checkout-svc connected to four downstream services with latency and error metrics.">
+            <div class="wf-head"><span>service map · <span class="lime">checkout-svc</span></span><span class="ok">healthy</span></div>
+            <svg viewBox="0 0 420 220" width="100%" height="220" role="presentation">
+              <defs>
+                <marker id="ah" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0 6 3 0 6z" fill="#43505f"/></marker>
+              </defs>
+              <line x1="100" y1="110" x2="220" y2="40"  stroke="#2b333f" stroke-width="1.4" marker-end="url(#ah)"/>
+              <line x1="100" y1="110" x2="220" y2="100" stroke="#c4f54a" stroke-width="1.8" marker-end="url(#ah)" opacity="0.7"/>
+              <line x1="100" y1="110" x2="220" y2="160" stroke="#2b333f" stroke-width="1.4" marker-end="url(#ah)"/>
+              <line x1="100" y1="110" x2="220" y2="200" stroke="#2b333f" stroke-width="1.4" marker-end="url(#ah)"/>
+              <g font-family="JetBrains Mono" font-size="10">
+                <circle cx="80" cy="110" r="26" fill="#181d27" stroke="#c4f54a" stroke-width="1.6"/>
+                <text x="80" y="113" text-anchor="middle" fill="#e7eaf0">checkout</text>
+                <circle cx="250" cy="40" r="20" fill="#13171f" stroke="#2b333f"/>
+                <text x="250" y="43" text-anchor="middle" fill="#aab2c0">auth</text>
+                <circle cx="250" cy="100" r="20" fill="#13171f" stroke="#f2c66b" stroke-width="1.5"/>
+                <text x="250" y="103" text-anchor="middle" fill="#aab2c0">orders-db</text>
+                <circle cx="250" cy="160" r="20" fill="#13171f" stroke="#2b333f"/>
+                <text x="250" y="163" text-anchor="middle" fill="#aab2c0">pricing</text>
+                <circle cx="250" cy="200" r="18" fill="#13171f" stroke="#2b333f"/>
+                <text x="250" y="203" text-anchor="middle" fill="#aab2c0">kafka</text>
+                <text x="330" y="44" fill="#6f7886">37ms · 0.0%</text>
+                <text x="330" y="104" fill="#f2c66b">189ms · 1.2%</text>
+                <text x="330" y="164" fill="#6f7886">45ms · 0.0%</text>
+                <text x="330" y="204" fill="#6f7886">17ms · 0.0%</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CAPABILITY GRID -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">03 · The rest of the toolkit</span>
+        <h2>Everything else you reach for during an incident.</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <h3>Span analytics</h3>
+          <p>Aggregate any span attribute into time series on the fly. Build a p99-by-region chart from raw traces without pre-defining a single metric.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v6m0 0 4-3m-4 3-4-3M5 13a7 7 0 1 0 14 0"/></svg></div>
+          <h3>Trace-aware alerting</h3>
+          <p>Alert on p99 of a route, error ratio of an edge, or saturation of a span attribute. Every alert links to exemplar traces that fired it.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Correlated logs</h3>
+          <p>Logs carrying a trace ID snap straight into the waterfall. Read the exact log lines a slow span emitted without leaving the trace.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg></div>
+          <h3>Deploy markers</h3>
+          <p>Overlay every release on your latency charts. See the exact commit that bent your p99 and roll the comparison back to the second.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>13-month hot retention</h3>
+          <p>Compare this Black Friday's checkout path to last year's, span for span. Kept queryable, not cold-stored behind a restore job.</p>
+        </article>
+        <article class="card">
+          <div class="card-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></div>
+          <h3>RBAC &amp; audit</h3>
+          <p>SSO via SAML or OIDC, scoped roles per team and per service, and a full audit log of every query and policy change.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. COST CONTROL FOCUS -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="eyebrow">04 · Cost controls</span>
+          <h2>Observability that can't surprise your finance team.</h2>
+          <p class="lead">Set ingest budgets per service. Spanforge enforces them with tail-sampling backpressure, so a runaway debug log or a retry storm tightens its own sample rate instead of detonating your invoice.</p>
+          <ul class="feature-list">
+            <li><span class="mk">✓</span><span><b>Soft ceiling</b> drops the baseline sample rate and posts to Slack.</span></li>
+            <li><span class="mk">✓</span><span><b>Hard ceiling</b> caps ingest while still keeping 100% of errors.</span></li>
+            <li><span class="mk">✓</span><span><b>Marginal-value report</b> ranks services by insight-per-dollar each week.</span></li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">budgets / checkout-svc</span><span class="code-tab">Live</span></div>
+<pre><span class="tok-com"># this month, checkout-svc</span>
+<span class="tok-key">ingest</span>        <span class="tok-num">412 GB</span> / <span class="tok-num">600 GB</span>   <span class="tok-fn">[68%]</span>
+<span class="tok-key">spans</span>         <span class="tok-num">88.4 B</span>
+<span class="tok-key">kept_errors</span>   <span class="tok-num">100%</span>          <span class="tok-fn">always</span>
+<span class="tok-key">baseline</span>      <span class="tok-num">0.005</span> → <span class="tok-num">0.004</span>   <span class="tok-fn">auto-tightened</span>
+<span class="tok-key">projection</span>    <span class="tok-num">571 GB</span>          <span class="tok-fn">under ceiling</span>
+<span class="tok-key">est_spend</span>     <span class="tok-num">$1,840</span>         <span class="tok-fn">▼ 71% YoY</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow mx-auto" style="justify-content:center">See it on your traffic</span>
+        <h2>Wire up one service in five minutes.</h2>
+        <p>Start on the free tier, point a single OTel collector at us, and judge the explorer on your own slow checkout path.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-arrow" href="pricing.html">Start free</a>
+          <a class="btn btn-ghost" href="integrations.html">View SDKs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Spanforge home">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+            <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+            <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+          </svg>
+          <span class="brand-name">span<b>forge</b></span>
+        </a>
+        <p>OpenTelemetry-native distributed tracing for backend teams who care about latency and the cost of knowing about it.</p>
+        <span class="foot-status"><span class="dot"></span> All systems operational</span>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul>
+        <li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How tracing works</a></li>
+        <li><a href="integrations.html">Integrations</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="changelog.html">Changelog</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Developers</h4><ul>
+        <li><a href="integrations.html">SDKs</a></li><li><a href="how-it-works.html">Tracing guide</a></li>
+        <li><a href="changelog.html">API status</a></li><li><a href="#">OTLP reference</a></li><li><a href="#">Self-host</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Company</h4><ul>
+        <li><a href="#">About</a></li><li><a href="#">Security</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Spanforge, Inc. — built in Berlin &amp; Toronto</span>
+      <span class="badges"><span>SOC 2 Type II</span><span>·</span><span>GDPR</span><span>·</span><span>HIPAA-ready</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

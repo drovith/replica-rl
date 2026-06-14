@@ -1,0 +1,25 @@
+job_name: modal-smoke
+jobs_dir: jobs
+n_attempts: 1
+n_concurrent_trials: 1
+agent_setup_timeout_multiplier: 3.0
+
+retry:
+  max_retries: 2
+
+artifacts:
+  - source: /app
+    destination: app
+    exclude: ["design"]
+
+environment:
+  type: modal
+  cpus: 4
+  memory_mb: 4096
+
+agents:
+  - name: claude-code
+    model_name: claude-haiku-4-5
+
+tasks:
+  - path: dataset/observability-saas

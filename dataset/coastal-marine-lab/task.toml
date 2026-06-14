@@ -1,0 +1,14 @@
+version = "1.0"
+
+[metadata]
+id = "coastal-marine-lab"
+recipe = "design-to-code"
+
+[agent]
+timeout_sec = 1800.0
+
+[verifier]
+timeout_sec = 900.0
+
+[environment]
+build_timeout_sec = 3600.0

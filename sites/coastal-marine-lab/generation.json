@@ -1,0 +1,19 @@
+{
+  "id": "coastal-marine-lab",
+  "brief": "A university marine-research laboratory studying coastal ecosystems, fisheries, and climate impact. The audience is academics, prospective graduate students, and journalists. Pages should cover the lab and its mission, research areas/projects, the people (faculty, students, staff), publications, and how to join or collaborate. Lean into a utilitarian, information-dense, classic-academic aesthetic: a readable serif body, clear blue hyperlinks, structured tables and lists, and a calm institutional palette with accessibility in mind.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built a six-page, classic-academic site for the fictional Calderwood Coastal Laboratory (marine research on Penobscot Bay), with a shared serif/sans design system, blue hyperlinks, structured tables and spec lists, a consistent navy header/footer, and substantive page-specific copy across Home, About, Research, People, Publications, and Join & Collaborate.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "about.html",
+    "research.html",
+    "people.html",
+    "publications.html",
+    "join.html",
+    "manifest.json"
+  ]
+}

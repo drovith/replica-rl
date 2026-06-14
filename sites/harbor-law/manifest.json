@@ -1,0 +1,17 @@
+{
+  "summary": "A conservative, authoritative marketing site for Halloran Voss LLP, a boutique corporate law firm advising founders and mid-market companies on M&A, IP, and venture financing.",
+  "design_system": {
+    "style_descriptors": ["authoritative", "editorial", "conservative", "refined", "navy-and-gold"],
+    "palette": ["#0f2238", "#0a1726", "#1b3450", "#b08e51", "#cba86c", "#f6f1e8", "#fbf8f2", "#1d2530"],
+    "fonts": ["Cormorant Garamond", "Inter"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Brand hero, stats, practice preview, matters, attorneys, and conversion CTA."},
+    {"path": "firm.html", "title": "The Firm", "purpose": "Origin story, principles, who-we-serve, and firm FAQs."},
+    {"path": "practices.html", "title": "Practices", "purpose": "Detailed M&A, IP, and venture financing practice areas with representative engagements."},
+    {"path": "attorneys.html", "title": "Attorneys", "purpose": "Partner roster, monogram portraits, and an in-focus founding-partner profile."},
+    {"path": "insights.html", "title": "Insights", "purpose": "Notable matters list and a library of partner-authored commentary."},
+    {"path": "contact.html", "title": "Contact", "purpose": "Confidential consultation form, offices, hours, and engagement disclaimer."}
+  ]
+}

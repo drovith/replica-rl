@@ -1,0 +1,17 @@
+{
+  "summary": "A utilitarian, classic-academic website for the fictional Calderwood Coastal Laboratory, a university marine-research group on Penobscot Bay studying coastal ecosystems, fisheries, and climate impact.",
+  "design_system": {
+    "style_descriptors": ["academic", "utilitarian", "institutional", "editorial", "calm", "information-dense"],
+    "palette": ["#f5f4ef", "#efeee7", "#15243a", "#1a2230", "#15539e", "#1f6b6b", "#9a6a17"],
+    "fonts": ["Source Serif 4", "IBM Plex Sans"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Lab overview, mission, key stats, research areas, and featured project."},
+    {"path": "about.html", "title": "About", "purpose": "Mission, values, fifty-year history timeline, and facilities."},
+    {"path": "research.html", "title": "Research", "purpose": "Four research programs, active projects, and the Penobscot Sentinel monitoring network."},
+    {"path": "people.html", "title": "People", "purpose": "Faculty, postdocs, graduate students, and field/technical staff directory."},
+    {"path": "publications.html", "title": "Publications", "purpose": "Selected peer-reviewed papers, datasets, reports, and open-data resources."},
+    {"path": "join.html", "title": "Join & Collaborate", "purpose": "Admissions, collaboration, community partnerships, press, and visiting information."}
+  ]
+}

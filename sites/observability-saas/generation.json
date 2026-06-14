@@ -1,0 +1,19 @@
+{
+  "id": "observability-saas",
+  "brief": "A B2B SaaS platform called a developer-facing observability and tracing product for backend engineering teams. The audience is staff engineers and SREs who care about latency, traces, and cost. Pages should cover the product, how distributed tracing works, pricing tiers, integrations/SDKs, and docs or a changelog. Lean into a dark, technical aesthetic with a tight monospaced accent font, dense data-feeling layouts, code snippets, and a restrained neon accent on near-black surfaces.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built Spanforge \u2014 a dark, terminal-flavoured 6-page marketing site for an OpenTelemetry-native distributed tracing product, with a shared design system, trace-waterfall and service-map visuals, syntax-highlighted code, pricing math and a versioned changelog, all on near-black surfaces with a restrained signal-lime accent.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "platform.html",
+    "how-it-works.html",
+    "integrations.html",
+    "pricing.html",
+    "changelog.html",
+    "manifest.json"
+  ]
+}

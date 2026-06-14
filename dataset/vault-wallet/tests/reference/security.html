@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security — Novault</title>
+<meta name="description" content="How Novault protects your crypto: on-device key generation, secure-enclave storage, transaction simulation, audited open-source code and an active bug bounty.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6l-8-4Z" stroke="#08091a" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#08091a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Novault
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Product</a></li>
+        <li><a href="security.html" class="active">Security</a></li>
+        <li><a href="chains.html">Chains &amp; Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="download.html">Download</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta"><a href="download.html" class="btn btn-primary">Get Novault</a></div>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow" style="justify-content:center;">Security architecture</span>
+    <h1>Not your keys?<br><span class="gradient-text">Not your crypto.</span></h1>
+    <p class="lead">Novault is built so that, by design, no employee, server or court order can move your assets. Here's exactly how the protection works — layer by layer, with nothing hidden behind marketing.</p>
+  </div>
+</section>
+
+<!-- KEY MODEL -->
+<section class="section--tight">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">The trust model</span>
+      <h2 class="mt-s">Keys are born and die on your device.</h2>
+      <p class="mt-s">When you create a wallet, your 12 or 24-word recovery phrase is generated locally using your device's hardware random number generator. From that phrase, every chain's private key is derived on-device. The phrase is encrypted at rest inside the Secure Enclave (iOS) or StrongBox / TEE (Android) and never transmitted — not to Novault, not to anyone.</p>
+      <ul class="checklist">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> No custody — we never hold, escrow or co-sign your funds</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> No accounts — no email or password to phish or leak</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Keys never appear in plaintext outside secure hardware</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Signing happens locally; we only broadcast signed transactions</li>
+      </ul>
+    </div>
+    <div class="split-media" role="img" aria-label="Diagram showing keys generated and stored on-device only">
+      <svg viewBox="0 0 460 380" style="position:absolute; inset:0; width:100%; height:100%;">
+        <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CFF"/><stop offset="1" stop-color="#25E6E0"/></linearGradient></defs>
+        <rect x="150" y="70" width="160" height="240" rx="22" fill="rgba(8,9,20,0.65)" stroke="url(#sg)" stroke-width="2"/>
+        <rect x="170" y="100" width="120" height="120" rx="12" fill="none" stroke="url(#sg)" stroke-width="1.4" opacity="0.6"/>
+        <text x="230" y="150" fill="#9AA0BC" font-size="13" text-anchor="middle" font-family="Space Grotesk">Secure</text>
+        <text x="230" y="170" fill="#9AA0BC" font-size="13" text-anchor="middle" font-family="Space Grotesk">Enclave</text>
+        <circle cx="230" cy="195" r="10" fill="url(#sg)"/>
+        <rect x="186" y="250" width="88" height="20" rx="10" fill="url(#sg)" opacity="0.25"/>
+        <rect x="186" y="278" width="60" height="14" rx="7" fill="url(#sg)" opacity="0.18"/>
+        <path d="M120 190h22M318 190h22" stroke="url(#sg)" stroke-width="2" stroke-dasharray="4 5"/>
+        <text x="60" y="195" fill="#6E7392" font-size="11" font-family="Inter">No cloud</text>
+        <text x="360" y="195" fill="#6E7392" font-size="11" font-family="Inter">No server</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- DEFENCE LAYERS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Defence in depth</span>
+      <h2>Six layers between you and a loss.</h2>
+      <p>Self-custody removes the custodian as a single point of failure. We wrap the rest in overlapping protections so a single mistake is rarely fatal.</p>
+    </div>
+    <div class="layers">
+      <div class="layer">
+        <span class="ln">01</span>
+        <div><h3>Hardware-backed key storage</h3><p>Recovery phrases and private keys are sealed in the device Secure Enclave / TEE, gated by biometrics and never exportable in plaintext.</p></div>
+      </div>
+      <div class="layer">
+        <span class="ln">02</span>
+        <div><h3>Transaction simulation</h3><p>Every transaction is run against a fork of the live chain first, so you see token balance changes and approvals before you sign — not after.</p></div>
+      </div>
+      <div class="layer">
+        <span class="ln">03</span>
+        <div><h3>Threat intelligence</h3><p>Addresses, contracts and dapp domains are checked against a continuously updated registry of known drainers, phishing sites and malicious approvals.</p></div>
+      </div>
+      <div class="layer">
+        <span class="ln">04</span>
+        <div><h3>Encrypted cloud recovery</h3><p>Optional backup splits and encrypts your phrase before it ever touches iCloud or Google Drive. The decryption key never leaves your device.</p></div>
+      </div>
+      <div class="layer">
+        <span class="ln">05</span>
+        <div><h3>Hardware wallet pairing</h3><p>Connect a Ledger or Trezor to keep keys fully offline while still using Novault's interface, simulations and chain coverage.</p></div>
+      </div>
+      <div class="layer">
+        <span class="ln">06</span>
+        <div><h3>Open-source &amp; reproducible</h3><p>Our signing and key-management code is public and builds are reproducible, so anyone can verify the binary matches the audited source.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDITS -->
+<section class="section--tight">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Verified, not promised</span>
+      <h2>Audited by the best in the field.</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="tag-mini">Smart contracts &amp; signing</div>
+        <h3 class="mt-s">Trail of Bits</h3>
+        <p>Full review of the key-derivation, signing and recovery modules. Report published, all findings resolved or accepted with mitigations.</p>
+      </div>
+      <div class="card">
+        <div class="tag-mini">Mobile &amp; enclave</div>
+        <h3 class="mt-s">OtterSec</h3>
+        <p>Assessment of secure storage, biometric gating and the extension ↔ mobile bridge. No critical or high-severity issues outstanding.</p>
+      </div>
+      <div class="card">
+        <div class="tag-mini">Ongoing</div>
+        <h3 class="mt-s">$2M Bug Bounty</h3>
+        <p>Running on Immunefi with rewards up to $2,000,000 for critical disclosures. Responsible researchers, we want to hear from you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Custodial vs. self-custody</span>
+      <h2>Where your assets actually live.</h2>
+    </div>
+    <div class="glass" style="overflow:hidden;">
+      <table class="fee-table">
+        <thead><tr><th>Question</th><th>Custodial app / exchange</th><th>Novault</th></tr></thead>
+        <tbody>
+          <tr><td>Who holds the private keys?</td><td>The company</td><td class="fee-zero">You, on your device</td></tr>
+          <tr><td>Can withdrawals be frozen?</td><td>Yes, anytime</td><td class="fee-zero">No — only you can sign</td></tr>
+          <tr><td>Is your balance an IOU?</td><td>Usually</td><td class="fee-zero">No — on-chain assets</td></tr>
+          <tr><td>What if the company fails?</td><td>Funds at risk</td><td class="fee-zero">Unaffected</td></tr>
+          <tr><td>KYC required to hold?</td><td>Yes</td><td class="fee-zero">No</td></tr>
+          <tr><td>Code reviewable?</td><td>Closed</td><td class="fee-zero">Open source</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section--tight">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Straight answers</span>
+      <h2>Security questions, answered.</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><h3><span>Q.</span> What happens if I lose my phone?</h3><p>Your funds live on the blockchain, not the phone. Reinstall Novault on any device, enter your recovery phrase (or restore the encrypted backup), and your full portfolio reappears.</p></div>
+      <div class="faq-item"><h3><span>Q.</span> Can Novault freeze or seize my crypto?</h3><p>No. We never hold your keys, so we have no technical ability to move, freeze or recover your assets — and neither does anyone who compels us.</p></div>
+      <div class="faq-item"><h3><span>Q.</span> Is my recovery phrase ever sent anywhere?</h3><p>Never in plaintext. If you enable cloud backup, the phrase is encrypted on-device first and the decryption key stays in your secure hardware.</p></div>
+      <div class="faq-item"><h3><span>Q.</span> How are scams and drainers blocked?</h3><p>We simulate transactions, label suspicious approvals, and screen dapp domains and addresses against a live threat registry, warning you before you sign.</p></div>
+      <div class="faq-item"><h3><span>Q.</span> Do you support hardware wallets?</h3><p>Yes. Pair a Ledger or Trezor to keep keys offline while using Novault's interface and chain coverage for everyday signing.</p></div>
+      <div class="faq-item"><h3><span>Q.</span> Can I verify the code myself?</h3><p>Yes. Our key-management and signing code is open source with reproducible builds, so you can confirm the app you run matches the audited source.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section--tight">
+  <div class="container">
+    <div class="cta-band">
+      <h2>Security you can verify.</h2>
+      <p>Download Novault and hold the keys yourself — backed by audits, a bug bounty, and code anyone can read.</p>
+      <div class="cta-actions">
+        <a href="download.html" class="btn btn-primary">Get Novault free</a>
+        <a href="chains.html" class="btn btn-ghost">See features</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6l-8-4Z" stroke="#08091a" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#08091a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Novault</a>
+        <p>The self-custody wallet for the open economy. Your keys never leave your device.</p>
+      </div>
+      <div class="footer-col"><h4>Product</h4><ul><li><a href="index.html">Overview</a></li><li><a href="chains.html">Chains &amp; Features</a></li><li><a href="security.html">Security</a></li><li><a href="pricing.html">Pricing &amp; Fees</a></li></ul></div>
+      <div class="footer-col"><h4>Get started</h4><ul><li><a href="download.html">Download mobile</a></li><li><a href="download.html">Browser extension</a></li><li><a href="download.html">Migrate a wallet</a></li><li><a href="security.html">Recovery guide</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="security.html">Audits</a></li><li><a href="index.html">Open source</a></li><li><a href="index.html">Bug bounty</a></li><li><a href="index.html">Press kit</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Novault Labs. Non-custodial software. Not financial advice.</span>
+      <div class="socials">
+        <a href="download.html" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H3l8-9L3 2h6l4 6 5-6Z"/></svg></a>
+        <a href="download.html" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 0 0-4-1l-.3.6A14 14 0 0 1 18 6c-2-1-4-1.5-6-1.5S8 5 6 6a14 14 0 0 1 3.3-1.4L9 4a16 16 0 0 0-4 1C3 8 2.5 11 3 14a16 16 0 0 0 5 2l.8-1.3-1.8-.9 1-.5a11 11 0 0 0 8 0l1 .5-1.8.9.8 1.3a16 16 0 0 0 5-2c.6-3.6-.4-6.5-2-9ZM9.5 13a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6Zm5 0a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6Z"/></svg></a>
+        <a href="download.html" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7a4 4 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

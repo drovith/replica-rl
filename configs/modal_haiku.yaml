@@ -1,0 +1,34 @@
+job_name: modal-haiku
+jobs_dir: jobs
+n_attempts: 2
+n_concurrent_trials: 10
+agent_setup_timeout_multiplier: 3.0
+
+retry:
+  max_retries: 2
+
+artifacts:
+  - source: /app
+    destination: app
+    exclude: ["design"]
+
+environment:
+  type: modal
+  cpus: 4
+  memory_mb: 4096
+
+agents:
+  - name: claude-code
+    model_name: claude-haiku-4-5
+
+tasks:
+  - path: dataset/observability-saas
+  - path: dataset/harbor-law
+  - path: dataset/pulse-festival
+  - path: dataset/bright-smiles-pedo
+  - path: dataset/form-furniture
+  - path: dataset/hearth-table
+  - path: dataset/vault-wallet
+  - path: dataset/coastal-marine-lab
+  - path: dataset/still-point-retreat
+  - path: dataset/offgrid-streetwear

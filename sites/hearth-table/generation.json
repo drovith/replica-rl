@@ -1,0 +1,19 @@
+{
+  "id": "hearth-table",
+  "brief": "A farm-to-table restaurant in a small town sourcing from nearby growers, with a seasonal changing menu. The audience is local diners and visitors booking a table or browsing the menu. Pages should cover the restaurant's story, the seasonal menu, the farms and suppliers, private events, and reservations/visit info. Lean into a warm, rustic, editorial aesthetic: earthy textured palette, a characterful serif paired with a humanist sans, and food-photography-led layouts.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built Sorrel & Stone \u2014 a warm, rustic-editorial 6-page farm-to-table restaurant site (home, story, seasonal menu, farms, events, visit) with a shared Fraunces/Work Sans design system, earthy palette, food-led layouts and consistent nav/footer.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "story.html",
+    "menu.html",
+    "farms.html",
+    "events.html",
+    "visit.html",
+    "manifest.json"
+  ]
+}

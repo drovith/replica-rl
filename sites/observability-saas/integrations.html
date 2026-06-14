@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrations &amp; SDKs — Spanforge</title>
+<meta name="description" content="Spanforge SDKs and integrations: Go, Python, Node, Java, Rust and Ruby, plus Kubernetes, Kafka, Postgres, and any OpenTelemetry exporter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Spanforge home">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+        <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+        <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+      </svg>
+      <span class="brand-name">span<b>forge</b></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="platform.html">Platform</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="integrations.html" aria-current="page">Integrations</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+    <div class="header-actions">
+      <a class="link-quiet" href="#">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Integrations &amp; SDKs</span>
+      <h1>If it speaks OTLP, it speaks Spanforge.</h1>
+      <p class="lead">There's no proprietary agent to adopt. Use the OpenTelemetry SDK for your language, add our exporter, and you're streaming traces. Below are the languages, frameworks and infra we auto-instrument out of the box.</p>
+    </div>
+  </section>
+
+  <!-- QUICKSTART -->
+  <section class="section--tight divider">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="eyebrow">60-second start</span>
+          <h2>One endpoint, one key.</h2>
+          <p class="lead">Already running an OpenTelemetry Collector? Add a single exporter block and restart. Every service already pushing OTLP lights up in the explorer immediately.</p>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">otel-collector.yaml</span><span class="code-tab">Collector</span></div>
+<pre><span class="tok-key">exporters</span>:
+  <span class="tok-key">otlp/spanforge</span>:
+    <span class="tok-key">endpoint</span>: <span class="tok-str">ingest.spanforge.dev:4317</span>
+    <span class="tok-key">headers</span>:
+      <span class="tok-key">sf-api-key</span>: <span class="tok-str">${SF_API_KEY}</span>
+    <span class="tok-key">compression</span>: <span class="tok-str">zstd</span>
+
+<span class="tok-key">service</span>:
+  <span class="tok-key">pipelines</span>:
+    <span class="tok-key">traces</span>:
+      <span class="tok-key">receivers</span>:  [<span class="tok-str">otlp</span>]
+      <span class="tok-key">exporters</span>:  [<span class="tok-fn">otlp/spanforge</span>]</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SDK GRID -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Language SDKs</span>
+        <h2>Auto-instrumentation for the stacks you run.</h2>
+        <p>Drop-in distributions wrapping the upstream OTel SDK with sensible defaults, our exporter, and resource detection pre-wired.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="sdk-card">
+          <div class="sdk-top"><span class="sdk-logo">Go</span><div><h3>Go</h3><span class="meta">v1.28 · stable</span></div></div>
+          <p class="text-2" style="font-size:14px;margin:0 0 12px">net/http, gRPC, database/sql, Redis, Kafka.</p>
+          <code><span class="tok-fn">go</span> get go.spanforge.dev/otel</code>
+        </article>
+        <article class="sdk-card">
+          <div class="sdk-top"><span class="sdk-logo">Py</span><div><h3>Python</h3><span class="meta">v1.26 · stable</span></div></div>
+          <p class="text-2" style="font-size:14px;margin:0 0 12px">Django, Flask, FastAPI, asyncpg, Celery.</p>
+          <code><span class="tok-fn">pip</span> install spanforge-otel</code>
+        </article>
+        <article class="sdk-card">
+          <div class="sdk-top"><span class="sdk-logo">JS</span><div><h3>Node.js</h3><span class="meta">v1.24 · stable</span></div></div>
+          <p class="text-2" style="font-size:14px;margin:0 0 12px">Express, Fastify, NestJS, Prisma, ioredis.</p>
+          <code><span class="tok-fn">npm</span> i @spanforge/otel</code>
+        </article>
+        <article class="sdk-card">
+          <div class="sdk-top"><span class="sdk-logo">Jv</span><div><h3>Java</h3><span class="meta">v2.6 · stable</span></div></div>
+          <p class="text-2" style="font-size:14px;margin:0 0 12px">Spring Boot, JDBC, Hibernate, Reactor.</p>
+          <code><span class="tok-fn">-javaagent:</span>spanforge.jar</code>
+        </article>
+        <article class="sdk-card">
+          <div class="sdk-top"><span class="sdk-logo">Rs</span><div><h3>Rust</h3><span class="meta">v0.24 · beta</span></div></div>
+          <p class="text-2" style="font-size:14px;margin:0 0 12px">tokio, axum, tonic, sqlx via tracing.</p>
+          <code><span class="tok-fn">cargo</span> add spanforge-otel</code>
+        </article>
+        <article class="sdk-card">
+          <div class="sdk-top"><span class="sdk-logo">Rb</span><div><h3>Ruby</h3><span class="meta">v1.5 · stable</span></div></div>
+          <p class="text-2" style="font-size:14px;margin:0 0 12px">Rails, Sidekiq, pg, Net::HTTP, Faraday.</p>
+          <code><span class="tok-fn">gem</span> install spanforge</code>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFRA INTEGRATIONS -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Infrastructure</span>
+        <h2>Context that survives the network.</h2>
+        <p>Tracing only works if context crosses queues, proxies and databases. These integrations propagate it for you.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card">
+          <h3 style="font-size:17px">Kubernetes</h3>
+          <p>Operator-managed collector DaemonSet with pod, node and namespace resource attributes auto-attached.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">Kafka</h3>
+          <p>Producer and consumer interceptors inject and extract <span class="mono">traceparent</span> on every message header.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">PostgreSQL</h3>
+          <p>Statement-level spans with <span class="mono">db.statement</span>, row counts and lock-wait timing captured.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">Envoy / Istio</h3>
+          <p>Mesh sidecars emit spans natively; Spanforge stitches them into your app traces seamlessly.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">AWS SQS &amp; SNS</h3>
+          <p>Message-attribute propagation keeps async fan-outs connected to the originating request.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">Redis</h3>
+          <p>Command spans with key cardinality and round-trip latency, plus pipeline grouping.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">gRPC</h3>
+          <p>Bidirectional interceptors for unary and streaming RPCs across every supported language.</p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:17px">NGINX</h3>
+          <p>OpenTelemetry module adds an edge root span and forwards context to upstreams.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPORT / OUTBOUND -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split split--rev">
+        <div>
+          <span class="eyebrow">Outbound &amp; alerting</span>
+          <h2>Plugs into the tools you already page from.</h2>
+          <p class="lead">Spanforge fits your incident workflow rather than replacing it. Route alerts where your team already lives, and forward raw spans wherever you need them.</p>
+          <ul class="feature-list">
+            <li><span class="mk">→</span><span><b>PagerDuty &amp; Opsgenie</b> — alerts carry exemplar trace links straight into the incident.</span></li>
+            <li><span class="mk">→</span><span><b>Slack &amp; Teams</b> — budget warnings and SLO burns posted with one-click trace deep links.</span></li>
+            <li><span class="mk">→</span><span><b>Grafana</b> — query Spanforge as a native data source via our PromQL-compatible API.</span></li>
+            <li><span class="mk">→</span><span><b>S3 &amp; GCS export</b> — stream raw OTLP to your own bucket for archival or compliance.</span></li>
+          </ul>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">alert-route.yaml</span><span class="code-tab">Routing</span></div>
+<pre><span class="tok-key">alert</span>: <span class="tok-str">checkout-p99-burn</span>
+<span class="tok-key">when</span>:  <span class="tok-key">p99</span>(<span class="tok-str">"/v2/checkout"</span>) &gt; <span class="tok-num">300ms</span> <span class="tok-key">for</span> <span class="tok-num">5m</span>
+<span class="tok-key">notify</span>:
+  <span class="tok-pun">-</span> <span class="tok-key">pagerduty</span>: <span class="tok-str">payments-oncall</span>
+  <span class="tok-pun">-</span> <span class="tok-key">slack</span>:     <span class="tok-str">"#sre-checkout"</span>
+<span class="tok-key">attach</span>:
+  <span class="tok-key">exemplars</span>: <span class="tok-num">5</span>   <span class="tok-com"># slowest traces, linked</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow mx-auto" style="justify-content:center">Don't see your stack?</span>
+        <h2>Anything OTLP works today.</h2>
+        <p>If your service can export OpenTelemetry — and almost all can — Spanforge accepts it. No waiting on an integration roadmap.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-arrow" href="pricing.html">Start free</a>
+          <a class="btn btn-ghost" href="how-it-works.html">Read the guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Spanforge home">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+            <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+            <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+          </svg>
+          <span class="brand-name">span<b>forge</b></span>
+        </a>
+        <p>OpenTelemetry-native distributed tracing for backend teams who care about latency and the cost of knowing about it.</p>
+        <span class="foot-status"><span class="dot"></span> All systems operational</span>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul>
+        <li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How tracing works</a></li>
+        <li><a href="integrations.html">Integrations</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="changelog.html">Changelog</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Developers</h4><ul>
+        <li><a href="integrations.html">SDKs</a></li><li><a href="how-it-works.html">Tracing guide</a></li>
+        <li><a href="changelog.html">API status</a></li><li><a href="#">OTLP reference</a></li><li><a href="#">Self-host</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Company</h4><ul>
+        <li><a href="#">About</a></li><li><a href="#">Security</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Spanforge, Inc. — built in Berlin &amp; Toronto</span>
+      <span class="badges"><span>SOC 2 Type II</span><span>·</span><span>GDPR</span><span>·</span><span>HIPAA-ready</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "id": "still-point-retreat",
+  "brief": "A yoga and wellness retreat center offering multi-day residential programs in a quiet rural setting. The audience is adults seeking rest and reset, browsing programs and dates. Pages should cover the retreat and its ethos, the programs/retreats on offer, the space and accommodation, the teachers, and booking/visit details. Lean into a calm, airy aesthetic: soft neutral palette, very generous spacing, a light elegant serif, and a slow, uncluttered editorial rhythm.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built Fallow, a six-page calm-editorial site for a rural Welsh yoga & wellness retreat \u2014 shared serif/sans design system, soft neutral palette, generous spacing, with home, ethos, programs, space, teachers and visit pages.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "ethos.html",
+    "programs.html",
+    "space.html",
+    "teachers.html",
+    "visit.html",
+    "manifest.json"
+  ]
+}

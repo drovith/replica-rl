@@ -1,0 +1,17 @@
+{
+  "summary": "Sorrel & Stone, a warm rustic-editorial website for a farm-to-table restaurant in the converted feed mill at Harlow Creek, with a seasonal menu, grower profiles, private events and reservations.",
+  "design_system": {
+    "style_descriptors": ["warm", "rustic", "editorial", "earthy", "characterful"],
+    "palette": ["#FBF7EC", "#F1E9D6", "#E7DCC2", "#25231D", "#3A4A33", "#2A3625", "#B0532B", "#9C7A53"],
+    "fonts": ["Fraunces", "Work Sans"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Brand introduction, seasonal ethos, featured dishes and calls to reserve."},
+    {"path": "story.html", "title": "Our Story", "purpose": "Origin of the restaurant, philosophy, timeline and the people in the kitchen."},
+    {"path": "menu.html", "title": "Menu", "purpose": "The current seasonal menu by course plus Sunday harvest lunch and tasting options."},
+    {"path": "farms.html", "title": "Farms", "purpose": "Profiles of the local growers, farmers, fishers and foragers who supply the kitchen."},
+    {"path": "events.html", "title": "Events", "purpose": "Private dining in The Hayloft with event types, packages and FAQs."},
+    {"path": "visit.html", "title": "Visit", "purpose": "Opening hours, location, directions, reservation form and house notes."}
+  ]
+}

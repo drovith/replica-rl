@@ -1,0 +1,18 @@
+{
+  "id": "vault-wallet",
+  "brief": "A consumer crypto and multi-chain wallet app emphasising security and self-custody, available on mobile and as a browser extension. The audience is crypto-curious consumers and existing holders. Pages should cover the product, security architecture, supported chains and features, pricing/fees, and download/get-started. Lean into a sleek, futuristic aesthetic: a dark canvas, vivid gradients, glassy translucent cards, subtle glow, and a clean geometric sans-serif.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 8,
+  "summary": "Built Novault \u2014 a 5-page marketing site for a futuristic self-custody multi-chain crypto wallet, with a shared dark/glassy gradient design system, consistent nav/footer, inline-SVG visuals, and distinct content across Product, Security, Chains & Features, Pricing, and Download pages.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "security.html",
+    "chains.html",
+    "pricing.html",
+    "download.html",
+    "manifest.json"
+  ]
+}

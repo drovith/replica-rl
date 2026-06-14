@@ -1,0 +1,16 @@
+{
+  "summary": "A maximalist, poster-like marketing site for RIPTIDE, an independent three-day coastal music and arts festival, covering the festival, lineup, schedule, tickets and travel.",
+  "design_system": {
+    "style_descriptors": ["maximalist", "high-energy", "poster-like", "clashing-vivid", "expressive", "playful"],
+    "palette": ["#160029", "#25064a", "#ff1f8e", "#19e3ff", "#c8ff1f", "#ff7a18", "#7b2ff7", "#fff3e2"],
+    "fonts": ["Anton", "Space Grotesk"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "The Festival", "purpose": "Hero overview of RIPTIDE: what it is, the six stages, the arts programme, press quotes and ticket CTA."},
+    {"path": "lineup.html", "title": "Lineup", "purpose": "Full 80+ act lineup with headliners, day-by-day poster columns and a genre breakdown."},
+    {"path": "schedule.html", "title": "Schedule", "purpose": "Set times across six stages for Friday, Saturday and Sunday, with a stage legend and planning notes."},
+    {"path": "tickets.html", "title": "Tickets", "purpose": "Pricing tiers, a feature comparison table, payment plans, add-ons, accessibility and ticket FAQs."},
+    {"path": "travel.html", "title": "Getting There", "purpose": "Travel routes, an illustrated site map, accommodation options, on-site facilities, sustainability and travel FAQs."}
+  ]
+}

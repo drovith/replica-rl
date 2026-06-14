@@ -1,0 +1,19 @@
+{
+  "id": "harbor-law",
+  "brief": "A boutique corporate law firm specialising in mergers, IP, and venture financing for founders and mid-market companies. The audience is CEOs, GCs, and founders evaluating counsel; trust and gravitas matter most. Pages should cover the firm, practice areas, attorney profiles, notable matters/insights, and contact. Lean into a conservative, authoritative aesthetic: a classic serif for headings, a navy-and-gold palette, formal spacing, and understated photography or portraits.",
+  "model": "claude-opus-4-8",
+  "effort": "high",
+  "viewport_width": 1440,
+  "steps": 9,
+  "summary": "Built Halloran Voss LLP \u2014 a six-page boutique corporate law firm site with a navy-and-gold palette, Cormorant Garamond/Inter type system, consistent header/footer, and distinct page content across home, firm, practices, attorneys, insights, and contact.",
+  "files": [
+    "styles.css",
+    "index.html",
+    "firm.html",
+    "practices.html",
+    "attorneys.html",
+    "insights.html",
+    "contact.html",
+    "manifest.json"
+  ]
+}

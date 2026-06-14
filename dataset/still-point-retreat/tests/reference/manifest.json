@@ -1,0 +1,17 @@
+{
+  "summary": "Fallow is a residential yoga and wellness retreat in the Welsh Marches, presented through a calm, airy editorial site covering its ethos, multi-day programs, the space and accommodation, the teachers, and how to visit.",
+  "design_system": {
+    "style_descriptors": ["calm", "airy", "editorial", "warm-neutral", "elegant", "slow"],
+    "palette": ["#F5F1E8", "#E5DECF", "#2C2A24", "#56614C", "#7E8A72", "#B08368"],
+    "fonts": ["Cormorant Garamond", "Jost"]
+  },
+  "entry": "index.html",
+  "pages": [
+    {"path": "index.html", "title": "Home", "purpose": "Brand hero, ethos snapshot, featured programs, space and teacher previews, and reservation call to action."},
+    {"path": "ethos.html", "title": "The Retreat", "purpose": "Origin story, philosophy, guiding principles, the shape of a day, and the land itself."},
+    {"path": "programs.html", "title": "Programs", "purpose": "The multi-day residential retreats with seasonal dates, all-inclusive rates, and what is included."},
+    {"path": "space.html", "title": "The Space", "purpose": "Gallery and detail of the practice barn, rooms and accommodation, the kitchen table, and amenities."},
+    {"path": "teachers.html", "title": "Teachers", "purpose": "Founder feature and the small faculty who lead practice, breath, yin, walking and rest."},
+    {"path": "visit.html", "title": "Visit", "purpose": "How booking works, rates, contact, getting here, and a plain-spoken FAQ."}
+  ]
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Spanforge</title>
+<meta name="description" content="Spanforge pricing: a free Developer tier, usage-based Team plan, and Enterprise with self-host and SSO. Pay for the spans you keep, not the spans you discard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Spanforge home">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+        <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+        <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+      </svg>
+      <span class="brand-name">span<b>forge</b></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="platform.html">Platform</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="pricing.html" aria-current="page">Pricing</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+    <div class="header-actions">
+      <a class="link-quiet" href="#">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="pricing.html">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Pricing</span>
+      <h1>Pay for the spans you keep.</h1>
+      <p class="lead">Most tracing vendors bill you for everything your services emit — including the millions of healthy 200s you'll never look at. Spanforge bills on <em>retained</em> spans after tail sampling, so your invoice tracks insight, not noise.</p>
+    </div>
+  </section>
+
+  <!-- PRICE CARDS -->
+  <section class="section--tight divider">
+    <div class="container">
+      <div class="price-grid">
+        <!-- DEV -->
+        <article class="price-card">
+          <span class="price-name">Developer</span>
+          <div class="price-amt">$0<small>/mo</small></div>
+          <p class="price-desc">For side projects and proving it works on one service.</p>
+          <a class="btn btn-ghost" href="#">Start free</a>
+          <ul class="price-feats">
+            <li><span class="ck">✓</span> 50M retained spans / month</li>
+            <li><span class="ck">✓</span> 30-day hot retention</li>
+            <li><span class="ck">✓</span> Trace explorer &amp; service map</li>
+            <li><span class="ck">✓</span> All language SDKs</li>
+            <li><span class="ck">✓</span> 3 team members</li>
+            <li><span class="ck">✓</span> Community support</li>
+          </ul>
+        </article>
+        <!-- TEAM -->
+        <article class="price-card featured">
+          <span class="price-name">Team <span class="pill" style="margin-left:8px;padding:3px 9px">popular</span></span>
+          <div class="price-amt">$0.18<small>/M spans</small></div>
+          <p class="price-desc">Usage-based for production teams. $40 platform fee includes 200M spans.</p>
+          <a class="btn btn-primary" href="#">Start 14-day trial</a>
+          <ul class="price-feats">
+            <li><span class="ck">✓</span> Everything in Developer</li>
+            <li><span class="ck">✓</span> Tail-based sampling policies</li>
+            <li><span class="ck">✓</span> Ingest budgets &amp; cost guardrails</li>
+            <li><span class="ck">✓</span> 13-month hot retention</li>
+            <li><span class="ck">✓</span> Trace-aware alerting + PagerDuty</li>
+            <li><span class="ck">✓</span> Unlimited team members</li>
+            <li><span class="ck">✓</span> Email &amp; chat support, 1-day SLA</li>
+          </ul>
+        </article>
+        <!-- ENTERPRISE -->
+        <article class="price-card">
+          <span class="price-name">Enterprise</span>
+          <div class="price-amt">Custom</div>
+          <p class="price-desc">For regulated estates and very high-cardinality workloads.</p>
+          <a class="btn btn-ghost" href="#">Talk to us</a>
+          <ul class="price-feats">
+            <li><span class="ck">✓</span> Everything in Team</li>
+            <li><span class="ck">✓</span> Self-hosted or VPC deployment</li>
+            <li><span class="ck">✓</span> SAML / OIDC SSO &amp; SCIM</li>
+            <li><span class="ck">✓</span> Custom retention &amp; data residency</li>
+            <li><span class="ck">✓</span> HIPAA BAA &amp; audit log export</li>
+            <li><span class="ck">✓</span> Named solutions engineer</li>
+            <li><span class="ck">✓</span> 99.9% uptime SLA, 1-hour Sev-1</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note" style="margin-top:22px"><span class="dot"></span> Volume tiers kick in automatically: spans drop to <b class="lime">$0.12/M</b> over 2B and <b class="lime">$0.08/M</b> over 10B per month.</p>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Compare plans</span>
+        <h2>Every line, in detail.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Feature</th><th>Developer</th><th>Team</th><th>Enterprise</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Retained spans included</td><td>50M / mo</td><td>200M, then metered</td><td>Custom commit</td></tr>
+            <tr><td>Hot retention</td><td>30 days</td><td>13 months</td><td>Custom</td></tr>
+            <tr><td>Trace explorer &amp; service map</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Tail-based sampling policies</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Ingest budgets &amp; guardrails</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+            <tr><td>Trace-aware alerting</td><td>Basic</td><td class="yes">✓ full</td><td class="yes">✓ full</td></tr>
+            <tr><td>SSO (SAML / OIDC) &amp; SCIM</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>Self-host / VPC deploy</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>HIPAA BAA &amp; data residency</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td></tr>
+            <tr><td>Support</td><td>Community</td><td>1-day SLA</td><td>1-hour Sev-1 SLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST CALLOUT -->
+  <section class="section divider">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="eyebrow">Why it's cheaper</span>
+          <h2>The math behind the 68% cut.</h2>
+          <p class="lead">A typical service emits ~2 billion spans a month. Maybe 0.3% of them — errors and slow outliers — are worth keeping. Bill on emitted spans and you pay for all 2 billion. Bill on retained and you pay for 6 million.</p>
+          <div class="kpi-row" style="margin-top:26px">
+            <span class="pill">2.0B emitted</span>
+            <span class="pill">→ tail sample →</span>
+            <span class="pill"><span class="dot"></span> 6.1M retained</span>
+          </div>
+        </div>
+        <div class="split-media">
+          <div class="code">
+            <div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">monthly-invoice</span><span class="code-tab">Estimate</span></div>
+<pre><span class="tok-com"># Team plan · one busy service</span>
+<span class="tok-key">emitted_spans</span>     <span class="tok-num">2,000,000,000</span>
+<span class="tok-key">kept_errors</span>       <span class="tok-num">1,940,000</span>     <span class="tok-fn">100%</span>
+<span class="tok-key">kept_slow</span>         <span class="tok-num">880,000</span>       <span class="tok-fn">&gt; SLO</span>
+<span class="tok-key">kept_baseline</span>     <span class="tok-num">3,300,000</span>     <span class="tok-fn">1/200</span>
+<span class="tok-pun">───────────────────────────────────</span>
+<span class="tok-key">retained_spans</span>    <span class="tok-num">6,120,000</span>
+<span class="tok-key">platform_fee</span>      <span class="tok-num">$40.00</span>
+<span class="tok-key">overage</span>           <span class="tok-num">$0.00</span>        <span class="tok-fn">within 200M</span>
+<span class="tok-pun">───────────────────────────────────</span>
+<span class="tok-key">total</span>             <span class="tok-num">$40.00</span> <span class="tok-fn">/ mo</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section divider">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Billing questions</span>
+        <h2>No asterisks, no surprise overages.</h2>
+      </div>
+      <div class="faq-item"><span class="faq-q">Q1</span><div><h3>What counts as a "retained span"?</h3><p>Any span we store after your tail-sampling policy runs. Spans dropped by sampling are free — they never touch your meter. Errors are always retained and you're billed for them, because you'll always want them.</p></div></div>
+      <div class="faq-item"><span class="faq-q">Q2</span><div><h3>What happens if I hit my ingest budget?</h3><p>Nothing breaks. Soft ceilings tighten your baseline sample rate and notify you; hard ceilings cap baseline ingest while still keeping 100% of errors. You decide the policy per service.</p></div></div>
+      <div class="faq-item"><span class="faq-q">Q3</span><div><h3>Is the free tier really free forever?</h3><p>Yes. 50M retained spans a month, 30-day retention, no card required. It's a genuine production allowance for a small service, not a 14-day tease.</p></div></div>
+      <div class="faq-item"><span class="faq-q">Q4</span><div><h3>Do you charge for users or hosts?</h3><p>No per-seat and no per-host fees on Team. Add your whole org. You're billed on retained spans and the flat platform fee — that's it.</p></div></div>
+      <div class="faq-item"><span class="faq-q">Q5</span><div><h3>Can we self-host?</h3><p>On Enterprise, yes — fully in your own VPC or on-prem, with the same console and SDKs. Your trace data never leaves your network.</p></div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow mx-auto" style="justify-content:center">Start where you are</span>
+        <h2>Free today, metered when you grow.</h2>
+        <p>Spin up the free tier in minutes. Upgrade only when one service outgrows 50M retained spans — and even then, you control the meter.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-arrow" href="#">Start free</a>
+          <a class="btn btn-ghost" href="#">Book a walkthrough</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Spanforge home">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="23" height="23" rx="5" stroke="#20262f"/>
+            <circle cx="6" cy="12" r="2.4" fill="#c4f54a"/><circle cx="18" cy="6" r="2.1" fill="#6fd3ff"/>
+            <circle cx="18" cy="18" r="2.1" fill="#aab2c0"/><path d="M7.8 11 16.4 6.8M7.8 13 16.4 17.2" stroke="#2b333f" stroke-width="1.3"/>
+          </svg>
+          <span class="brand-name">span<b>forge</b></span>
+        </a>
+        <p>OpenTelemetry-native distributed tracing for backend teams who care about latency and the cost of knowing about it.</p>
+        <span class="foot-status"><span class="dot"></span> All systems operational</span>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul>
+        <li><a href="platform.html">Platform</a></li><li><a href="how-it-works.html">How tracing works</a></li>
+        <li><a href="integrations.html">Integrations</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="changelog.html">Changelog</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Developers</h4><ul>
+        <li><a href="integrations.html">SDKs</a></li><li><a href="how-it-works.html">Tracing guide</a></li>
+        <li><a href="changelog.html">API status</a></li><li><a href="#">OTLP reference</a></li><li><a href="#">Self-host</a></li>
+      </ul></div>
+      <div class="foot-col"><h4>Company</h4><ul>
+        <li><a href="#">About</a></li><li><a href="#">Security</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Spanforge, Inc. — built in Berlin &amp; Toronto</span>
+      <span class="badges"><span>SOC 2 Type II</span><span>·</span><span>GDPR</span><span>·</span><span>HIPAA-ready</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
